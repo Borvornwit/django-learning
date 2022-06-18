@@ -2,8 +2,14 @@
 
 <link rel="stylesheet" href="{% static 'style.css' %}" />
 
-{% for feature in features %}
+{% if user.is_authenticated %}
+<h1>Hi, {{user.username}}!</h1>
+{% endif %} {% for feature in features %}
 <h1>{{feature.name}}</h1>
 <h1>{{feature.details}}</h1>
 <br />
-{% endfor %}
+{% endfor %} {% if user.is_authenticated %}
+<a class="button" href="logout">logout</a>
+{% else %}
+<a calss="button" href="login">Login or sign up</a>
+{% endif %}
